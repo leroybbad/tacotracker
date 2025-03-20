@@ -69,6 +69,22 @@
   margin-right: 0.5rem;
 }
 
+.star-rating {
+  display: flex;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+
+.star {
+  cursor: pointer;
+  color: #ddd;
+  margin-right: 0.25rem;
+}
+
+.star:hover, .star.filled {
+  color: #ffb400;
+}
+
 .spice-level-markers {
   display: flex;
   justify-content: space-between;

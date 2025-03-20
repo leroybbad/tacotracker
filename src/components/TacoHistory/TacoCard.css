@@ -73,6 +73,11 @@
   color: #666;
 }
 
+.rating-stars {
+  color: #ffb400;
+  letter-spacing: 2px;
+}
+
 .taco-card-footer {
   padding: 0 1rem 1rem;
   display: flex;

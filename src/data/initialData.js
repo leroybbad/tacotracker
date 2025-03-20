@@ -32,10 +32,10 @@ export const PROTEINS = [
 // Define possible taco toppings
 export const TOPPINGS = [
   "cheese", "sour cream", "guacamole", "lettuce", "tomato", "onion", "cilantro", 
-  "salsa", "jalapeños", "pico de gallo", "lime", "radishes", "pineapple"
+  "jalapeños", "pico de gallo", "lime", "radishes", "pineapple"
 ];
 
-// Define possible preparation types
-export const PREPARATIONS = [
-  "grilled", "fried", "steamed", "baked", "raw"
+// Define possible salsa types
+export const SALSAS = [
+  "roja", "verde", "habanero", "avocado verde"
 ];

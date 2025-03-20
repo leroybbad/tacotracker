@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { PROTEINS, TOPPINGS, PREPARATIONS } from '../../data/initialData';
+import { PROTEINS, TOPPINGS, SALSAS } from '../../data/initialData';
 import './TacoForm.css';
 
 const TacoForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
     name: '',
+    restaurant: '',
+    rating: 3,
     location: {
       city: '',
       state: '',
@@ -12,7 +14,7 @@ const TacoForm = ({ onSubmit }) => {
     },
     protein: [],
     toppings: [],
-    preparation: '',
+    salsas: [],
     spiceLevel: 3,
     photo: '',
     notes: ''
@@ -98,6 +100,23 @@ const TacoForm = ({ onSubmit }) => {
     </div>
   );
   
+  // Render star rating
+  const renderStarRating = () => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <span 
+          key={i} 
+          className={`star ${i <= formData.rating ? 'filled' : ''}`}
+          onClick={() => setFormData({...formData, rating: i})}
+        >
+          ★
+        </span>
+      );
+    }
+    return <div className="star-rating">{stars}</div>;
+  };
+  
   return (
     <form className="taco-form" onSubmit={handleSubmit}>
       <div className="form-group">
@@ -113,8 +132,26 @@ const TacoForm = ({ onSubmit }) => {
         />
       </div>
       
+      <div className="form-group">
+        <label htmlFor="restaurant">Restaurant:</label>
+        <input
+          type="text"
+          id="restaurant"
+          name="restaurant"
+          value={formData.restaurant}
+          onChange={handleChange}
+          placeholder="e.g., Taco Bell, Local Taqueria"
+          required
+        />
+      </div>
+      
+      <div className="form-group">
+        <label htmlFor="rating">Rating:</label>
+        {renderStarRating()}
+      </div>
+      
       <div className="form-section">
-        <h3>Location</h3>
+        <h3>Location (Optional)</h3>
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="location.city">City:</label>
@@ -124,7 +161,6 @@ const TacoForm = ({ onSubmit }) => {
               name="location.city"
               value={formData.location.city}
               onChange={handleChange}
-              required
             />
           </div>
           
@@ -136,7 +172,6 @@ const TacoForm = ({ onSubmit }) => {
               name="location.state"
               value={formData.location.state}
               onChange={handleChange}
-              required
             />
           </div>
         </div>
@@ -149,7 +184,6 @@ const TacoForm = ({ onSubmit }) => {
             name="location.country"
             value={formData.location.country}
             onChange={handleChange}
-            required
           />
         </div>
       </div>
@@ -158,21 +192,7 @@ const TacoForm = ({ onSubmit }) => {
         <h3>Ingredients</h3>
         {renderCheckboxGroup(PROTEINS, 'protein', 'Protein')}
         {renderCheckboxGroup(TOPPINGS, 'toppings', 'Toppings')}
-        
-        <div className="form-group">
-          <label htmlFor="preparation">Preparation:</label>
-          <select
-            id="preparation"
-            name="preparation"
-            value={formData.preparation}
-            onChange={handleChange}
-          >
-            <option value="">Select preparation</option>
-            {PREPARATIONS.map(prep => (
-              <option key={prep} value={prep}>{prep}</option>
-            ))}
-          </select>
-        </div>
+        {renderCheckboxGroup(SALSAS, 'salsas', 'Salsas')}
       </div>
       
       <div className="form-group">

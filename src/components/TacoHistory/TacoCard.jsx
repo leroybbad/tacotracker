@@ -7,10 +7,12 @@ const TacoCard = ({ taco, viewMode }) => {
   const {
     name,
     date,
+    restaurant,
+    rating,
     location,
     protein,
     toppings,
-    preparation,
+    salsas,
     spiceLevel,
     photo,
     notes
@@ -28,7 +30,16 @@ const TacoCard = ({ taco, viewMode }) => {
   
   // Format the location
   const formatLocation = (loc) => {
-    return `${loc.city}, ${loc.state}, ${loc.country}`;
+    const parts = [];
+    if (loc.city) parts.push(loc.city);
+    if (loc.state) parts.push(loc.state);
+    if (loc.country) parts.push(loc.country);
+    return parts.join(', ') || 'Not specified';
+  };
+  
+  // Render rating as stars
+  const renderRating = (stars) => {
+    return '★'.repeat(stars) + '☆'.repeat(5 - stars);
   };
   
   // Render spice level as emojis
@@ -52,9 +63,20 @@ const TacoCard = ({ taco, viewMode }) => {
         )}
         
         <div className="taco-details">
-          <div className="taco-location">
-            <span className="detail-label">Location:</span> {formatLocation(location)}
+          <div className="taco-restaurant">
+            <span className="detail-label">Restaurant:</span> {restaurant}
           </div>
+          
+          <div className="taco-rating">
+            <span className="detail-label">Rating:</span> 
+            <span className="rating-stars">{renderRating(rating)}</span>
+          </div>
+          
+          {(location.city || location.state || location.country) && (
+            <div className="taco-location">
+              <span className="detail-label">Location:</span> {formatLocation(location)}
+            </div>
+          )}
           
           <div className="taco-protein">
             <span className="detail-label">Protein:</span> {protein.join(', ')}
@@ -66,15 +88,15 @@ const TacoCard = ({ taco, viewMode }) => {
           
           {expanded && (
             <>
-              {preparation && (
-                <div className="taco-preparation">
-                  <span className="detail-label">Preparation:</span> {preparation}
-                </div>
-              )}
-              
               {toppings.length > 0 && (
                 <div className="taco-toppings">
                   <span className="detail-label">Toppings:</span> {toppings.join(', ')}
+                </div>
+              )}
+              
+              {salsas && salsas.length > 0 && (
+                <div className="taco-salsas">
+                  <span className="detail-label">Salsas:</span> {salsas.join(', ')}
                 </div>
               )}
               

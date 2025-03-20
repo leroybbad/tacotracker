@@ -19,7 +19,7 @@ const HomePage = () => {
       <Dashboard />
       
       <button className="log-taco-button" onClick={handleLogTaco}>
-        Eat Taco
+        Add Taco
       </button>
       
       {isLoggingTaco && (
