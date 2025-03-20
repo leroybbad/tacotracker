@@ -1,0 +1,39 @@
+.taco-counter {
+  text-align: center;
+}
+
+.counter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.total-count {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ff5722;
+  margin-bottom: 0.5rem;
+}
+
+.recent-count {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Common styles for metric cards */
+.metric-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.metric-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: #333;
+  text-align: center;
+}

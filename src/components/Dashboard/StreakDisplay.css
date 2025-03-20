@@ -1,0 +1,36 @@
+.streak-display {
+  text-align: center;
+}
+
+.streak-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.streak-count {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.streak-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ff5722;
+  line-height: 1;
+}
+
+.streak-label {
+  font-size: 1rem;
+  color: #666;
+  margin-left: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.streak-message {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
